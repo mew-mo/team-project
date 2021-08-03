@@ -40,6 +40,18 @@ module.exports = function(grunt) {
         src: ['css/custom.css']
       }
     },
+    htmllint: {
+      your_target: {
+        options: {
+          force: false,
+          plugins: ['htmllint-plugin-name'],
+          /* htmllint options go here */
+        },
+        src: [
+          'index.html'
+        ]
+      }
+    },
     watch: {
       scripts: {
         files: ['js/custom.js', 'sass/custom.scss', 'index.html'],
@@ -57,10 +69,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-csslint');
+  grunt.loadNpmTasks('grunt-htmllint');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task(s).
-  grunt.registerTask('default', ['watch', 'uglify', 'sass', 'jshint', 'csslint']);
+  grunt.registerTask('default', ['watch', 'uglify', 'sass', 'jshint', 'csslint', 'htmllint']);
 
   grunt.registerTask('dev', ['watch', 'sass', 'jshint', 'csslint']);
   grunt.registerTask('prod', ['uglify']);
